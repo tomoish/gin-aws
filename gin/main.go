@@ -33,8 +33,6 @@ func init() {
 	router.POST("/albums", postAlbums)
 	router.GET("/albums/:id", getAlbumByID)
 
-	// router.Run("localhost:8080")
-
 	ginLambda = ginadapter.New(router)
 }
 
@@ -68,9 +66,7 @@ func getAlbumByID(c *gin.Context) {
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 }
 
-// Handler will deal with Gin working with Lambda
 func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	// If no name is provided in the HTTP request body, throw an error
 	return ginLambda.ProxyWithContext(ctx, req)
 }
 
