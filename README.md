@@ -18,9 +18,15 @@ How to deploy Gin application to AWS lambda
 
 ## Blog
 
+https://qiita.com/tomoish/items/2669197958bd6c5ceb7a
+
 ## Get Started
 
-1. Run this command in ./infra
+1. Run these commands in ./infra
+
+```
+cdk bootstrap
+```
 
 ```
 cdk deploy
