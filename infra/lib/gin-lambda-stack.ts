@@ -14,13 +14,13 @@ export class GinLambdaStack extends Stack {
     super(scope, id, props);
 
     const lambdaAsset = new assets.Asset(this, "GinServerAsset", {
-      path: path.join(__dirname, "../../gin"),
+      path: path.join(__dirname, "../../gin/bin"),
     });
 
     const lambdaFn = new lambda.Function(this, "GinServer", {
       code: lambda.Code.fromBucket(lambdaAsset.bucket, lambdaAsset.s3ObjectKey),
       timeout: Duration.minutes(5),
-      runtime: lambda.Runtime.GO_1_X,
+      runtime: lambda.Runtime.PROVIDED_AL2,
       handler: "main",
     });
 
